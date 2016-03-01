@@ -4,9 +4,11 @@ var _ = require('lodash');
 
 /* QUERY BUILD */
 function queryBuilder(page, obj) {
-	obj.page = page;
+
+	delete obj.page;
+	var objX = _.merge({page:page}, obj);
 	var link = '?';
-	link += _.map(obj,function(v,k){
+	link += _.map(objX,function(v,k){
 		return encodeURIComponent(k) + '=' + encodeURIComponent(v);
 	}).join('&');
 
