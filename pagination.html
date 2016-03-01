@@ -1,0 +1,37 @@
+
+
+<div class="container">
+	<ul class="pagination">
+
+		{% if !pagination.isFirstPage  %}
+		<li><a href="{{ pagination.firstPageLink }}">First</a></li>
+		<li><a href="{{ pagination.previousPageLink }}">&laquo;</a></li>
+		{% endif  %}
+		
+
+		{% for page in pagination.pageList %}
+		<li class="{% if (pagination.currentPage==page.itemNumber)  %}active{% endif  %}">
+			<a href="{{ page.itemLink }}">{{ page.itemNumber }}</a>
+		</li>
+		{% endfor %}
+
+		
+		{% if !pagination.isLastPage  %}
+		<li><a href="{{ pagination.nextPageLink }}">&raquo;</a></li>
+		<li><a href="{{ pagination.lastPageLink }}">Last</a></li>
+		{% endif  %}
+
+	</ul>
+	
+	<hr>
+	<div class="well">
+		{% for ctn in pagination.pageContent %}
+		<p>List {{ ctn }}</p>
+		{% endfor %}
+	</div>
+	<div class="well">
+		{% for p in pagination %}
+		<p>{{ loop.key }} - {{ p }}</p>
+		{% endfor %}
+	</div>
+</div>
