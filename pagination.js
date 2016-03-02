@@ -62,7 +62,7 @@ function queryBuilder(page, obj) {
  	var tempRange = _.range(1, (pageCount+1));
  	var tempChunk = _.chunk(tempRange, numberToDisplay);
  	_.forEach(tempChunk, function(value, key) {
- 		if(_.indexOf(value, currentPage) > -1){
+ 		if(_.includes(value, currentPage)){
  			pageRange = value; 
  		}
  	});
